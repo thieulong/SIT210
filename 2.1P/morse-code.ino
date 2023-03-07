@@ -1,4 +1,6 @@
 const int led = D7;
+const int button = D3;
+int buttonState = 0;
 
 const long dit_duration = 100;
 const long da_duration = 300;
@@ -39,30 +41,35 @@ const char* morse_codes[] = {
 
 void setup() {
   pinMode(led, OUTPUT);
+  pinMode(button, INPUT_PULLUP);
 }
 
 void loop() {
-  name = name.toLowerCase();
-  for (int i = 0; i < name.length(); i++) {
-    char c = name.charAt(i);
-    if (c == ' ') { 
-      delay(space_duration);
-    } else {
-      const char* morse = morse_codes[c - 'a'];
-      for (int j = 0; morse[j] != '\0'; j++) {
-        if (morse[j] == '.') {
-          digitalWrite(led, HIGH);
-          delay(dit_duration);
-          digitalWrite(led, LOW);
-          delay(intra_character_duration);
-        } else if (morse[j] == '-') {
-          digitalWrite(led, HIGH);
-          delay(da_duration);
-          digitalWrite(led, LOW);
-          delay(intra_character_duration);
+  buttonState = digitalRead(button);
+  if (buttonState == LOW) {
+    name = name.toLowerCase();
+    for (int i = 0; i < name.length(); i++) {
+        char c = name.charAt(i);
+        if (c == ' ') { 
+            delay(space_duration);
+        } else {
+            const char* morse = morse_codes[c - 'a'];
+            for (int j = 0; morse[j] != '\0'; j++) {
+                if (morse[j] == '.') {
+                    digitalWrite(led, HIGH);
+                    delay(dit_duration);
+                    digitalWrite(led, LOW);
+                    delay(intra_character_duration);
+                } else if (morse[j] == '-') {
+                    digitalWrite(led, HIGH);
+                    delay(da_duration);
+                    digitalWrite(led, LOW);
+                    delay(intra_character_duration);
+                }
+            }
+            delay(inter_character_duration); 
         }
-      }
-      delay(inter_character_duration); 
     }
   }
+  delay(100);
 }
