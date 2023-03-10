@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <center>
+  <head>
+    <title>Cloud Traffic Light</title>
+  </head>
+  <body>
+    <h1>SIT210 - Embedded Systems Development</h1>
+    <h2>Task 4.2HD Particle - Calling a function from the Web to Device</h2>
+    <hr>
+    <br><br><br><br>
+      <div style="border: 1px solid black; padding: 5px; margin: 5px; width: 300px;">
+        <h1>Particle Argon</h1>
+        <h2>Could Traffic Light</h2>
+      </div>
+    <br>
+    <p style="font-size: 26px;">Click the checkbox to turn on the coressponding light</p>
+    <br>
+    <form action="https://api.particle.io/v1/devices/e00fce684e9b91f12e0b74f5/light?access_token=a4f68409441e559a1a63c100b11db4e371527433" method="POST">
+    <label style="font-size: 24px;">
+        <input type="radio" name="arg" value="red" style="transform: scale(1.5); margin-right: 10px;">Red
+        <input type="radio" name="arg" value="yellow" style="transform: scale(1.5); margin-right: 10px;"> Yellow
+        <input type="radio" name="arg" value="green" style="transform: scale(1.5); margin-right: 10px;"> Green
+    </label>
+      <br><br><br><br>
+      <input type="submit" value="Confirm" style="width: 150px; height: 50px; font-size: 20px;">
+    </form>
+  </body>
+  </center>
+</html>
+
