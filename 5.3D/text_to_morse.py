@@ -58,12 +58,14 @@ morse_alphabet = {
 
 def text_to_morse(text):
     morse_code = ""
-    if morse_code == "":
-        return "Please enter a message above!"
-    else:
+    if text:
+        text = text.upper()
         for letter in text:
-            morse_code += morse_alphabet[letter.upper()] + " "
+            morse_code += morse_alphabet[letter] + " "
         morse_code = list(morse_code)
         morse_code[-1] = "/"
         morse_code = "".join(morse_code)
         return morse_code
+    else: 
+        return "Please enter a message above!"
+
