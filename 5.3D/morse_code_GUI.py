@@ -14,7 +14,7 @@ class Window(QWidget):
         self.setWindowTitle(title)
         self.setGeometry(200, 200, 500, 300)
 
-        prompt = QLabel('Enter a message to convert to Morse code', self)
+        prompt = QLabel('Enter a message to convert to Morse code (< 12 letters)', self)
         prompt.setFont(QFont('Arial', 16))
         layout.addWidget(prompt, 0, 0, 1, 1)
 
